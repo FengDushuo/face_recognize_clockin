@@ -1,0 +1,37 @@
+
+
+.cd-user-modal{
+    width: 1200px;
+	height: 870px;
+	margin: 0 auto;
+	background: url("../img/background.jpg")repeat-x;
+	background-size: 100% 100%;
+}
+
+.cd-user-modal-container{
+	position: relative;
+    display: inline-block;
+    background: rgb(59, 40, 58);
+    border: 1px solid rgb(38, 43, 46);
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+} 
+  
+
+#lab_file{
+	font-size: 12px;
+	padding: 10px 30px;
+	background: #101213;
+	color: #FFF;
+	border: none;
+	border-radius: 5px;
+}
+
+#picture{
+	display: none;
+}

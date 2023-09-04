@@ -1,0 +1,79 @@
+*{
+    margin:0px;
+    padding:0px；
+}
+body{
+    background-color: snow;
+}
+.wrapper{
+    width:70%;
+    height:950px;
+    background-color: #e3f9fd;
+    margin: 0px auto;
+}
+.header{
+    width:100%;
+    height:90px;
+    margin: 0px auto;
+    background-color: snow;
+}
+h2{
+    width:30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float:left;
+    text-align: left;
+}
+.current{
+    width:30%;
+    float:right;
+    margin:20px;
+    text-align: right;
+}
+.setcontent{
+    width:100%;
+    margin-top:10px;
+    margin-bottom: 30px;
+    color:#801dae;
+}
+.setcontent p{
+    margin:20px;
+}
+.setcontent #members{
+    width:70%;
+    height:200px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.btn{
+    border-radius: 20px;
+    background-color: azure;
+}
+.setcontent .numset{
+    width:30px;
+    margin-right:5px;
+}
+
+.resultcontent{
+    width:100%;
+    margin-top:10px;
+    margin-bottom: 30px;
+    color:#801dae;
+}
+.beign{
+    font: 10px;
+    margin-left:20px;
+}
+.begin p{
+    margin:20px;
+}
+.rad{
+    float:left;
+    margin:20px;
+    margin-right: 50px;
+}
+.rad textarea{
+    width:250px;
+    height:150px;
+    font-size:18px;
+}

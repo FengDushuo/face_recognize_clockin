@@ -1,0 +1,96 @@
+
+
+.cd-user-modal{
+    width: 1200px;
+	height: 870px;
+	margin: 0 auto;
+	background: url("../img/background.jpg")repeat-x;
+	background-size: 100% 100%;
+}
+
+.cd-user-modal-container{
+    width:1200px;
+	height: 450px;
+} 
+  
+  
+.cd-user-modal-container{
+    width:1200px;
+	height: 450px;
+}
+
+.sideleft{
+	width:460px;
+	height: 250px;
+	float: left;
+	padding:85px 130px
+}
+.sideleft p{
+	padding: 8px 0;
+	font-size: 16px;
+}
+
+
+.sideleft{
+	width:460px;
+	height: 250px;
+	float: left;
+	padding:85px 130px
+}
+.sideleft p{
+	padding: 8px 0;
+	font-size: 16px;
+}
+.sideright{
+	width: 480px;
+	height: 450px;
+	float: right;
+}
+
+.sideright .cd-login{
+	width: 330px;
+	height: 350px;
+	background-color:rgba(255,255,255,0.75);
+	margin: 50px 90px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="button"]{
+	-web-kit-appearance:none;
+  	-moz-appearance: none;
+  	display: block;
+  	margin: 0 auto;
+  	font-size:15px;
+  	width: 240px;
+}
+
+
+input[type="text"]{
+	height:35px;
+	border-radius:3px;
+	border:1px solid #dee4e9;
+	color:#6a6f77;
+	outline:0;
+}
+input[type="password"]{
+	height:35px;
+	border-radius:3px;
+	border:1px solid #cdd8e0;
+	color:#6a6f77;
+	outline:0;
+}
+input[type="button"]{
+	margin-top: 25px;
+	height: 35px;
+	background:  rgb(135, 206, 206);
+	color: #052531;
+	font-weight: bold;
+	font-size: 16px;
+}
+input[type="button"]:hover{
+	background: azure;
+	cursor: pointer;
+}
+
+  

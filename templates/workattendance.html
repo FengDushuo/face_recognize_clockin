@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/index.css")}}" />
+{% end %}
+{% block body %}
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+        
+        <div class="sideright">
+            <div id="cd-login"> <!-- 登录表单 -->
+                <form class="cd-form" method="POST">
+                    <p class="fieldset">
+                        <label class="astyle">姓名</label>
+                        <input id="stuname" type="text" placeholder="请输入姓名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="astyle">学号</label>
+                        <input id="stuid" type="text"  placeholder="请输入学号">
+                    </p>
+                </form>
+            </div>
+        </div>
+        <label for="picture" id="lab_file">拍照并上传</label>
+        <input id="picture" type="file" accept="image/*" multiple />
+        <canvas id="result" width="300px" height="300px"></canvas>
+    </div>
+</div>
+
+<!--   引入jQuery  -->
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/LocalResizeIMG.js"></script>
+    
+<!--   mobileBUGFix.js 兼容修复移动设备       -->
+<script src="../static/js/mobileBUGFix.mini.js" type="text/javascript"></script>
+
+<script>
+
+    $("input:file").localResizeIMG({
+        width: 300,
+        height: 300,
+        
+        success: function (result) {
+            var img = new Image();
+            var stuname = $("#stuname").val();
+            var stuid = $("#stuid").val();
+            img.src = result.base64;
+            //img = drawImage(img, 0, 0, 300, 300)
+            console.log(result.clearBase64);
+            //$("body").append(img);
+            $("#result").empty();
+            $("#result").append(img); //呈现图像(拍照結果)
+            $.ajax({
+                url: "/workattendance",
+                type: "POST",
+                dataType: "json",
+                data:{formFile:result.clearBase64,studentname:stuname,studentid:stuid},
+                error: function(){
+                    alert("Error!");
+                },
+                success: function(data){
+                    alert("图片已上传");
+                        
+                }
+            }); 
+        }
+    });
+
+
+</script>
+{% end %}

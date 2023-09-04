@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="header" id="head">
+    <div class="title">基于人脸识别的办公室系统</div>
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/listanddate.css")}}" />
+    
+</div>
+   
+{% end %}
+{% block body %}
+
+
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+        <div class="sideleft">
+            <h1>基于人脸识别的办公室系统
+            </h1>
+            </br></br></br>
+            <p>数据库管理中现仅包含对数据库中数据进行删除操作
+            </p>
+            <p>数据库中增添数据和修改数据在人脸录入中进行操作
+            </p>
+    
+        </div>
+        <div class="sideright">
+            <div id="cd-login"> <!-- 登录表单 -->
+                <form class="cd-form" method="POST">
+                    <p class="fieldset">
+                        <label class="astyle">删除学生姓名</label>
+                        <input id="deletename" type="text" placeholder="输入被删除的学生姓名">
+                    </p>
+                    <p class="fieldset">
+                        <label class="astyle">删除学生学号</label>
+                        <input id="deleteid" type="text" placeholder="输入被删除的学生学号">
+                    </p>
+                    <p class="fieldset">
+                        <input class="full-width2" type="button" id="deleteload" value="提 交" onmouseover="this.style.backgroundPosition='left -36px'"
+                        onmouseout="this.style.backgroundPosition='left top'">
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script>
+    $(document).ready(function(){
+        $("#deleteload").click(function(){
+            var deletename = $("#deletename").val();
+            var deleteid = $("#deleteid").val();
+            var pd = {"deletename":deletename, "deleteid":deleteid};
+            $.ajax({
+                type:"post",
+                url:"/deleteinfo",
+                data:pd,
+                cache:false,
+                success:function(evt){
+                    if(evt=="inputerror"){
+                        alert("输入信息错误或学生信息不在数据库中，请重新输入");
+                    }
+                    else{
+                        alert("提交成功")
+                        alert("学生数据已删除")
+                        window.location.href = "/user";
+                    }
+                },
+                error:function(){
+                    alert("error!");
+                },
+            });
+        });
+    });
+</script>
+
+
+{% end %}
+
+{% block footer %}
+<div class="footer" id="foot">
+    <div class="copyright">
+        <div class="img">
+            <i class="icon2"></i><span>办公室：7#605</span>
+        </div>
+        <div class="img">
+            <i class="icon3"></i><span>作者：冯读硕</span>
+        </div>
+        <div class="img">
+            <i class="icon3"></i><span>电话：18896809086</span>
+        </div>
+    </div>       
+</div>
+
+{% end %}

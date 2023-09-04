@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/user.css")}}" />
+{% end %}
+
+{% block body %}
+<div class="usermain">
+    <h2>用户信息:</h2>
+    <ul>
+        {% for one in users %}
+            <li id="用户名">username:{{one[1]}}</li>
+            <li id="电子邮箱">email:{{one[3]}}</li>
+            <div class="container">
+                <div class="logC">
+                    <p><input type="BUTTON" value="查看记录历史" id="tolistdate" onclick="window.location.href='/listanddate'"/></p>
+                </div>
+                <div class="logC">
+                    <p><input type="BUTTON" value="进行人脸录入" id="tofaceinput" onclick="window.location.href='/workattendance'"/></p>
+                </div>
+                <!-- <div class="logC">
+                    <p><input type="BUTTON" value="进行考勤" id="tocheckwork" onclick="window.location.href='/workerdo'"/></p>
+                </div> -->
+                <div class="logC">
+                    <p><input type="BUTTON" value="数据库管理" id="tocheckwork" onclick="window.location.href='/deleteinfo'"/></p>
+                </div>
+                <div class="logC">
+                    <p><input type="BUTTON" value="手机拍照查看" id="tocheckwork" onclick="window.location.href='/phonepic'"/></p>
+                </div>
+
+            </div>
+        {% end %}
+    </ul>
+</div>
+{% end %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="header" id="head">
+    <div class="title">基于人脸识别的办公室系统</div>
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/listanddate.css")}}" />
+    
+</div>
+   
+{% end %}
+{% block body %}
+
+
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+        <div class="sideleft">
+            <h1>基于人脸识别的办公室系统
+            </h1>
+            </br></br></br>
+            <p>拍照并上传合照
+            </p>
+            <p>识别照片人脸
+            </p>
+    
+        </div>
+        <div class="sideright">
+            <div id="cd-login"> <!-- 登录表单 -->
+                <input class="full-width2" type="button" id="downloadfile" value="查看下载链接" onmouseover="this.style.backgroundPosition='left -36px'"
+                        onmouseout="this.style.backgroundPosition='left top'">
+                
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script>
+    $(document).ready(function(){
+        $("#downloadfile").click(function(){
+            $.ajax({
+                type:"post",
+                url:"/listanddate",
+                cache:false,
+                success:function(data){
+                    alert("点击链接下载记录文件");
+                    var csvdatalist=data.split(',');
+                    var htmlstr="";
+                    for (var i=0;i<csvdatalist.length;i++){
+                        htmlstr="<input type=\'button\' onclick=window.location.href=\'/download?filename="+csvdatalist[i]+"' value=\'"+csvdatalist[i]+"\'>点击下载</button>"
+                        $("#cd-login").append(htmlstr)
+                    }
+                }
+            })
+        })
+    })
+            
+</script>
+
+
+{% end %}
+
+{% block footer %}
+<div class="footer" id="foot">
+    <div class="footer" id="foot">
+        <div class="copyright">
+            <div class="img">
+                <i class="icon2"></i><span>办公室：7#605</span>
+            </div>
+            <div class="img">
+                <i class="icon3"></i><span>作者：冯读硕</span>
+            </div>
+            <div class="img">
+                <i class="icon3"></i><span>电话：18896809086</span>
+            </div>
+        </div>       
+    </div>
+</div>
+
+{% end %}

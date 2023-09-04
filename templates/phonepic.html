@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/phonepic.css")}}" />
+{% end %}
+
+
+{% block body %}
+
+<style>
+    .tablebody{font-size: 20px;}
+</style>
+
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+        <label for="picture" id="lab_file">上传照片</label>
+        <input id="picture" type="file" accept="image/*" multiple />
+        <table id="favouredpolicy" clss="favouredpolicy" style="display:none">
+            <tbody class="tablebody">
+                <tr>
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>出勤情况</td>
+                </tr>                         
+            </tbody>
+        </table>        
+    </div>
+    
+</div>
+
+<!--   引入jQuery  -->
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/js/LocalResizeIMG.js"></script>
+
+<!--   mobileBUGFix.js 兼容修复移动设备       -->
+<script src="../static/js/mobileBUGFix.mini.js" type="text/javascript"></script>
+<script type="text/javascript">  
+    $("input:file").localResizeIMG({
+        width: 300,
+        height: 300,
+        success: function (result) {
+            var img = new Image();
+            img.src = result.base64;
+            console.log(result.clearBase64);
+            //$("body").append(img);
+            $("#result").empty();
+            $("#result").append(img); //呈现图像(拍照結果)
+            $.ajax({
+                url: "/phonepic",
+                type: "POST",
+                dataType: "json",
+                data:{formFile:result.clearBase64},
+                error: function(){
+                    alert("Error!");
+                },
+                success: function(data){
+                    var target = document.getElementById("favouredpolicy");
+                    if(target.style.display=="none"){
+                        target.style.display="";
+                    }
+                    var str="";
+                    for (var i=0;i<data["stuid"].length;i++){
+                        str = "<tr><td>"+data["stuid"][i]+"</td><td>"+data["stuname"][i]+"</td><td>"+data["ifattend"][i]+"</td></tr>";
+                        $("#favouredpolicy").append(str)
+                    }
+                }
+            }); 
+        }
+    });
+</script>
+{% end %}

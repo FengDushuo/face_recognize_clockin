@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="header" id="head">
+    <div class="title">基于人脸识别的办公室系统
+    </div>
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/forgetpwd.css")}}" />
+</div>
+   
+{% end %}
+
+{% block body %}
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+        <div class="sideleft">
+                <h1>基于人脸识别的办公室系统
+                </h1>
+                </br></br></br>
+                <p>拍照并上传合照
+                </p>
+                <p>识别照片人脸
+                </p>
+        </div>
+        <div class="sideright">
+            <div id="cd-signup"> 
+                <form class="cd-form" method="POST">
+                    <p class="fieldset">
+                        <label class="image-replace cd-username" for="username">用户名</label>
+                        <input class="full-width has-padding has-border" id="username" type="text" placeholder="输入用户名">
+                    </p>
+
+                    <p class="fieldset">
+                        <label class="image-replace cd-password" for="email">邮箱</label>
+                        <input class="full-width has-padding has-border" id="email" type="text"  placeholder="输入邮箱">
+                    </p>
+                    <p class="fieldset">
+                        <input class="full-width2" type="button" id="forgetpwd" value="发送邮件找回密码" onmouseover="this.style.backgroundPosition='left -36px'"
+                        onmouseout="this.style.backgroundPosition='left top'">
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+{% end %}

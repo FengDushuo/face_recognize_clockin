@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <link type="text/css" rel="stylesheet"  href="{{static_url("css/index.css")}}" />
+{% end %}
+{% block body %}
+<div class="cd-user-modal"> 
+    <div class="cd-user-modal-container">
+            <input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia()" />
+            <video id="video" width="300px" height="300px" autoplay="autoplay"></video>
+            <canvas id="canvas" width="300px" height="300px"></canvas>
+            <div id="showName"></div>
+        <div class="sideright">
+            <div id="cd-login"> <!-- 登录表单 -->
+                <form class="cd-form" method="POST">
+                    <p class="fieldset">
+                        <input class="full-width2" type="button" id="nameupload" onclick="takePhoto()" value="拍照并上传" onmouseover="this.style.backgroundPosition='left -36px'"
+                        onmouseout="this.style.backgroundPosition='left top'">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //获得video摄像头区域
+    let video = document.getElementById("video");
+    function getMedia() {
+        let constraints = {
+            video: {width: 300, height: 300},
+            audio: true
+        };
+        let promise = navigator.mediaDevices.getUserMedia(constraints);
+        promise.then(function (MediaStream) {
+            video.srcObject = MediaStream;
+            video.play();
+        }).catch(function (PermissionDeniedError) {
+            console.log(PermissionDeniedError);
+        })
+    }
+    function takePhoto() {
+        //获得Canvas对象
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, 300, 300);
+        UploadFile();
+    }
+
+    function UploadFile(){
+        let canvas = document.getElementById('canvas');
+        console.log(canvas.toDataURL('image/jpeg'))  //也可以是png
+        jQuery.post('/workerdo', {
+            img: canvas.toDataURL('image/jpeg'),//转换为Base64
+        }).done(function(rs) {
+            alert("图片已上传");
+            console.log(rs);
+            document.getElementById("showName").innerHTML = rs
+        }).fail(function(err) {
+            console.log(err);
+            document.getElementById("showName").innerHTML = err
+        });
+    }
+
+
+</script>
+{% end %}

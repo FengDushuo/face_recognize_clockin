@@ -1,0 +1,46 @@
+*{
+    margin:1px;
+    padding:0px;
+}
+body{
+    background-color: snow;
+}
+
+.usermain{
+    width: 1200px;
+	height: 870px;
+	margin: 0 auto;
+	background: url("../img/background.jpg")repeat-x;
+	background-size: 100% 100%;
+}
+
+.container{
+    width:100%;
+    margin-top:200px;
+    text-align: center;
+	background-size: 100% 100%;
+}
+#tofaceinput{
+    height:50px;
+    width:500px;
+	background:  rgb(135, 206, 206);
+	color: #052531;
+	font-weight: bold;
+	font-size: 16px;
+}
+#tocheckwork{
+    height:50px;
+    width:500px;
+	background:  rgb(135, 206, 206);
+	color: #052531;
+	font-weight: bold;
+	font-size: 16px;
+}
+#tolistdate{
+    height:50px;
+    width:500px;
+	background:  rgb(135, 206, 206);
+	color: #052531;
+	font-weight: bold;
+	font-size: 16px;
+}
