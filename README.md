@@ -1,5 +1,6 @@
 # face_recognize_clockin
-Face recognition attendance system  
+Face recognition attendance system.  
+Please refer to the PDF for specific operating instructions.
 
 # requirements
 chardet==4.0.0  
